@@ -1,5 +1,7 @@
 const http = require("http");
 const nodemailer = require("nodemailer");
+const crypto = require("crypto");
+
 const transporter = nodemailer.createTransport({
 	service: "gmail",
 	auth: {
@@ -21,7 +23,7 @@ const requestListener = function (req, res) {
 			var mailOptions = {
 				from: "awoodstorebot@gmail.com",
 				to: process.env.RCPT,
-				subject: "Order at aWoodStore.com",
+				subject: "Order at aWoodStore.com #" + crypto.randomBytes(16).toString("hex"),
 				text: body
 			};
 
