@@ -9,7 +9,7 @@ const transporter = nodemailer.createTransport({
 });
 
 const requestListener = function (req, res) {
-	console.log("[INFO] Received request: " + req.socket.remoteAddress + " " + req.url);
+	console.log("[INFO] Received request: " + req.socket.remoteAddress + " " + req.method + " " + req.url);
 
 	if (req.method === "POST") {
 		let body = [];
